@@ -1,0 +1,21 @@
+# Default index page
+DirectoryIndex index.php
+
+
+# Remove file extensions
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+
+# Display a custom error message
+ErrorDocument 404 http://localhost/penny/404
+ErrorDocument 500 http://localhost/penny/500
+
+# Prevent directory listing
+Options -Indexes
+  
+
+
