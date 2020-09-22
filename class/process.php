@@ -1,6 +1,7 @@
 <?php
 include_once('db.php');
-require_once "PHPMailer/PHPMailerAutoload.php";
+require_once "Mail.php"; // PEAR Mail package
+require_once ('Mail/mime.php'); // PEAR Mail_Mime package
 
 class process {
     private $db;
@@ -16,8 +17,120 @@ class process {
 					<head>
 					<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet" type="text/css">
+					<head>
+					<!--[if gte mso 12]>
+					> <style type="text/css">
+					> [a.btn {
+						padding:15px 22px !important;
+						display:inline-block !important;
+					}]
+					> </style>
+					> <![endif]-->
+					<title>kreative</title>
+					<style type="text/css">
+					div, p, a, li, td {
+						-webkit-text-size-adjust:none;
+					}
+					.ReadMsgBody {
+						width: 100%;
+						background-color: #d1d1d1;
+					}
+					.ExternalClass {
+						width: 100%;
+						background-color: #d1d1d1;
+						line-height:100%;
+					}
+					body {
+						width: 100%;
+						height: 100%;
+						background-color: #d1d1d1;
+						margin:0;
+						padding:0;
+						-webkit-font-smoothing: antialiased;
+						-webkit-text-size-adjust:100%;
+					}
+					html {
+						width: 100%;
+					}
+					img {
+						-ms-interpolation-mode:bicubic;
+					}
+					table[class=full] {
+						padding:0 !important;
+						border:none !important;
+					}
+					table td img[class=imgresponsive] {
+						width:100% !important;
+						height:auto !important;
+						display:block !important;
+					}
+					@media only screen and (max-width: 800px) {
+					body {
+					 width:auto!important;
+					}
+					table[class=full] {
+					 width:100%!important;
+					}
+					table[class=devicewidth] {
+					 width:100% !important;
+					 padding-left:20px !important;
+					 padding-right: 20px!important;
+					}
+					table td img.responsiveimg {
+					 width:100% !important;
+					 height:auto !important;
+					 display:block !important;
+					}
+					}
+					@media only screen and (max-width: 640px) {
+					table[class=devicewidth] {
+					 width:100% !important;
+					}
+					table[class=inner] {
+					 width:100%!important;
+					 text-align: center!important;
+					 clear: both;
+					}
+					table td a[class=top-button] {
+					 width:160px !important;
+					  font-size:14px !important;
+					 line-height:37px !important;
+					}
+					table td[class=readmore-button] {
+					 text-align:center !important;
+					}
+					table td[class=readmore-button] a {
+					 float:none !important;
+					 display:inline-block !important;
+					}
+					.hide {
+					 display:none !important;
+					}
+					table td[class=smallfont] {
+					 border:none !important;
+					 font-size:26px !important;
+					}
+					table td[class=sidespace] {
+					 width:10px !important;
+					}
+					}
+					 @media only screen and (max-width: 520px) {
+					}
+					@media only screen and (max-width: 480px) {
 					
-					<head></head>
+					 table {
+					 border-collapse: collapse;
+					}
+					table td[class=template-img] img {
+					 width:100% !important;
+					 display:block !important;
+					}
+					}
+					@media only screen and (max-width: 320px) {
+					}
+					</style>
+					</head>
 					
 					<body>
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="full">
@@ -32,8 +145,7 @@ class process {
 									<td><table border="0" cellspacing="0" cellpadding="0" align="left" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
 										<tr>
 										  <td width="23" class="hide">&nbsp;</td>
-
-										  <td height="75" class="inner" valign="middle"><a href="'.URL.'"><img class="logo" src="'.URL.'images/logo.png" width="180" height="61" alt="Logo"></a></td>
+										  <td height="75" class="inner" valign="middle"><a href="http://projectlive.ng/"><img class="logo" src="http://projectlive.ng/images/logo-e.png" width="180" height="61" alt="Logo"></a></td>
 										</tr>
 									  </table>
 									  <table width="150" border="0" cellspacing="0" cellpadding="0" align="right" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
@@ -74,8 +186,8 @@ class process {
 											</table>
 											<table width="22%" border="0" cellspacing="0" cellpadding="0" align="right" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
 											  <tr>
-												<!--<td align="center"><a href="https://facebook.com/earnersfund" style="margin-top:5px; display:inline-block;" target="_blank"><img src="'.URL.'images/facebook.png" width="32" height="atuo" alt="Social Media" /></a></td>
-												<td align="center"><a href="https://twitter.com/earnersfund" style="margin-top:5px; display:inline-block;" target="_blank"><img src="'.URL.'images/twitter.png" width="32" height="atuo" alt="Social Media" /></a></td>-->
+												<td align="center"><a href="https://facebook.com/" style="margin-top:5px; display:inline-block;" target="_blank"><img src="http://projectlive.ng/images/facebook.png" width="32" height="atuo" alt="Social Media" /></a></td>
+												<td align="center"><a href="https://twitter.com/" style="margin-top:5px; display:inline-block;" target="_blank"><img src="http://projectlive.ng/images/twitter.png" width="32" height="atuo" alt="Social Media" /></a></td>
 												 
 											  </tr>
 											  <tr>
@@ -90,7 +202,7 @@ class process {
 									  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 										<tr>
 										  <td width="3.33%" class="sidespace">&nbsp;</td>
-										  <td width="93.33%"><img class="imgresponsive" src="'.URL.'images/email-img.jpg" width="554" height="atuo" alt="Banner" style="max-width:100%"/></td>
+										  <td width="93.33%"><img class="imgresponsive" src="http://projectlive.ng/images/footer-bg-img.jpg" width="554" height="atuo" alt="Banner" /></td>
 										  <td width="3.33%" class="sidespace">&nbsp;</td>
 										</tr>
 										<tr>
@@ -132,7 +244,11 @@ class process {
 						  </table></td>
 					  </tr>
 					</table>
-					 	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="full">
+					
+					 
+					 
+					 
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="full">
 					  <tr>
 						<td align="center"><table width="600" border="0" cellspacing="0" cellpadding="0" align="center" class="devicewidth">
 							<tr>
@@ -150,8 +266,7 @@ class process {
 										  <td width="21">&nbsp;</td>
 										  <td><table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 											  <tr>
-												<td align="center" 
-												style="font:11px Helvetica,  Arial, sans-serif; color:#000000;">&copy; '.date("Y").' <br/> Earners Fund </td>
+												<td align="center" style="font:11px Helvetica,  Arial, sans-serif; color:#000000;">&copy; 2014 <br/> Global Business Builders.org</td>
 											  </tr>
 											  <tr>
 												<td height="18">&nbsp;</td>
@@ -169,34 +284,36 @@ class process {
 					</table>
 					</body>
 					</html>';
-			 
-			 
-			 //Create a new PHPMailer instance
-			$mail = new PHPMailer;
-			// Set PHPMailer to use the sendmail transport
-			$mail->isSendmail();
-			//Set who the message is to be sent from
-			$mail->setFrom($from, 'Mason Capital Investment');
-			//Set an alternative reply-to address
-			$mail->addReplyTo($from, 'Mason Capital Investment');
-			//Set who the message is to be sent to
-			$mail->addAddress($to, '');
-			//Set the subject line
-			$mail->Subject = $subject;
-			//Read an HTML message body from an external file, convert referenced images to embedded,
-			//convert HTML into a basic plain-text alternative body
-			$mail->msgHTML($html);
-			//Replace the plain text body with one created manually
-			$mail->AltBody = $message;
-			 
+			  
+			$headers = array ('From' => $from,'To' => $to, 'Subject' => $subject);
 			
-			//send the message, check for errors
-			if (!$mail->send()) {
-				//return "Mailer Error: " . $mail->ErrorInfo;
-			} else {
-				//return $return;
+			$text = ''; // text versions of email.
+			
+			$crlf = "\n";
+			
+			$mime = new Mail_mime($crlf);
+			$mime->setTXTBody($text);
+			$mime->setHTMLBody($html);
+			
+			//do not ever try to call these lines in reverse order
+			$body = $mime->get();
+			$headers = $mime->headers($headers);
+			
+			 $host = "localhost"; // all scripts must use localhost
+			 $username = "noreply@litchproject.io"; //  your email address (same as webmail username)
+			 $password = "Global2010"; // your password (same as webmail password)
+			
+			$smtp = Mail::factory('smtp', array ('host' => $host, 'auth' => true,
+			'username' => $username,'password' => $password));
+			
+			$mail = $smtp->send($to, $headers, $body);
+			
+			if (PEAR::isError($mail)) {
+			return "<p>" . $mail->getMessage() . "</p>" ;
 			}
-
+			else {
+			return  $return;
+			}
 						
 		
 		}
